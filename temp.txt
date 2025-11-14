@@ -1,0 +1,22 @@
+ini_set("soap.wsdl_cache_enabled", "0");
+$sms_client = new SoapClient('http://payamak-service.ir/SendService.svc?wsdl', array('encoding'=>'UTF-8'));
+
+try {
+$parameters['userName'] = "your your name";
+$parameters['password'] = "your password";
+$parameters['fromNumber'] = "your dedicated sms number";
+$parameters['toNumbers'] = array("09120001234");
+$parameters['messageContent'] = "message content";
+$parameters['isFlash'] = false;
+$recId = array();
+$status = array();
+$parameters['recId'] = &$recId ;
+$parameters['status'] = &$status ;
+
+
+echo $sms_client->SendSMS($parameters)->SendSMSResult;
+} 
+catch (Exception $e) 
+{
+ echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
