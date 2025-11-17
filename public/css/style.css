@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+
+  /* Colors */
+  --color-original-red: #ee1f25;
+  /* Colors */
+
+  /* Fonts */
+  --font-DanaLight: "Dana Light";
+  --font-DanaRegular: "Dana Regular";
+  --font-DanaMediume: "Dana Mediume";
+  --font-DanaBold: "Dana Bold";
+  --font-DanaBlack: "Dana Black";
+  --font-DanaHeavy: "Dana Heavy";
+
+}
+
+@layer utilities {
+  /* Scrollbar */
+  body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+  }
+
+  
+
+
+  /* Size and color via CSS variables */
+  :root {
+    --swiper-navigation-color: #fff !important;
+    --swiper-navigation-size: 32px !important;
+  }
+
+  /* OR fine-grained control using selectors */
+  .swiper-button-next svg,
+  .swiper-button-prev svg {
+    width: 32px !important;
+    height: 32px !important;
+    fill: #fff !important;
+  }
+
+
+  
+
+  /* SCROLLBAR */
+  .app-scrollbar::-webkit-scrollbar {
+    width: 4px; /* SCROLLBAR THICKNESS */
+  }
+
+  /* SCROLL PATH */
+  .app-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* SCROLL THUMB */
+  .app-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(229 231 235);
+    border-radius: 10px;
+    transition: background-color 0.3s;
+  }
+
+  /* HOVER */
+  /* .app-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(209 213 219);
+  } */
+
+  /* REMOVE UP AND DOWN BUTTONS */
+  .app-scrollbar::-webkit-scrollbar-button:start:decrement,
+  .app-scrollbar::-webkit-scrollbar-button:end:increment {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+
+  .sort-chip {
+    @apply bg-white border-gray-300 text-gray-700;
+  }
+  .sort-chip.active {
+    @apply bg-original-red text-white border-original-red shadow-lg;
+  }
+  .sort-chip.active svg {
+    @apply text-white;
+  }
+  /* .sort-chip:hover:not(.active) {
+    @apply border-gray-400 bg-gray-50;
+  } */
+
+  .swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none !important;
+}
+
+}
+
+@layer base{
+
+    @font-face {
+        font-family: "Dana Light"; /* 400 */
+        src: local("Dana Light"), url("../fonts/woff2/Dana-light.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana Regular"; /* 500 */
+        src: local("Dana Regular"), url("../fonts/woff2/Dana-Regular.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana Mediume"; /* 600 */
+        src: local("Dana Mediume"), url("../fonts/woff2/Dana-Medium.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana Bold";
+        src: local("Dana Bold"), url("../fonts/woff2/Dana-Bold.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana Black";
+        src: local("Dana Black"), url("../fonts/woff2/Dana-Black.woff2") format("woff2");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Dana Heavy";
+        src: local("Dana Heavy"), url("../fonts/woff2/Dana-Heavy.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    ::selection {
+      @apply bg-[#aa5e5f] text-white;
+    }
+
+}
