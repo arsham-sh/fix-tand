@@ -218,21 +218,16 @@ document.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("input", () => validateFieldRealtime(name));
   });
 
-  // ✅ Final submit validation
   form.addEventListener("submit", (e) => {
-    fieldNames.forEach(ui.clearError);
-    const messages = validateAll();
-    const invalidFields = Object.keys(messages);
-
-    if (invalidFields.length > 0) {
-      e.preventDefault(); // جلوی ارسال رو بگیر تا خطا اصلاح بشه
-      invalidFields.forEach((f) => ui.setError(f, messages[f]));
-      fields[invalidFields[0]]?.focus();
+    const msg = validatePhone(phoneInput.value.trim());
+    if (msg) {
+      e.preventDefault();
+      ui.showError(msg);
+      phoneInput.focus();
       return;
     }
 
-    // ✅ فرم معتبر است، پس اجازه ارسال داده می‌شود
-    // در این نقطه فرم به طور طبیعی (action + method) ارسال می‌شود
+    ui.hideError();
   });
 });
 // ================= END REGISTER FORM VALIDATION =================
