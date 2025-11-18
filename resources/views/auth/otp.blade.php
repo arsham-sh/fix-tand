@@ -12,10 +12,10 @@
         </div>
 
         <!-- Terms -->
-        <div class="flex items-center space-x-2 space-x-reverse gap-2">
-            <a href="/terms" class="text-sm text-gray-700 font-DanaBold underline">قوانین و مقررات <span
-                    class="text-original-red font-DanaBlack">Fix</span><span
-                    class="text-black font-DanaBlack">Tand</span></a>
+        <div class="flex justify-center">
+            <a href="{{ route('terms') }}" class="text-sm text-gray-700 font-DanaBold underline">
+                قوانین و مقررات <span class="text-original-red font-DanaBlack">Fix</span><span class="text-black font-DanaBlack">Tand</span>
+            </a>
         </div>
 
         <button type="submit"

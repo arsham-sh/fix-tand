@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FixTand - ورود به حساب</title>
+    <title>FixTand —فروشگاه تعمیر و فروش موبایل</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/photo_5782904397707807609_y.jpg') }}">
     @vite('public/css/style.css')
     @vite('resources/css/app.css')

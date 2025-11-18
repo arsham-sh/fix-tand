@@ -3,10 +3,9 @@
 <main class="w-full max-w-sm bg-white rounded-2xl p-8 md:p-10">
     <!-- Header -->
     <section class="text-center mb-10">
-        <h1 class="text-2xl font-DanaBlack text-black">وارد شدن به <span
-                class="font-DanaBlack text-original-red">Fix</span><span class="font-DanaBlack text-black">Tand</span>
+        <h1 class="text-2xl font-DanaBlack text-black">ورود به حساب
         </h1>
-        <p class="text-gray-700 text-sm mt-2 font-DanaBold">لطفا شماره موبایل خود را جهت دریافت کد تایید وارد نمایید.</p>
+        <p class="text-gray-700 text-sm mt-2 font-DanaBold">لطفا شماره موبایل خود را جهت دریافت کد وارد نمایید.</p>
     </section>
 
     {{-- Display success/error messages --}}
@@ -66,17 +65,16 @@
         </div>
 
         <!-- Terms -->
-        <div class="flex items-center space-x-2 space-x-reverse gap-2">
-            <a href="./terms.html" class="text-sm text-gray-700 font-DanaBold underline">
-                قوانین و مقررات <span class="text-original-red font-DanaBlack">Fix</span><span class="text-black font-DanaBlack">Tand</span>
-            </a>
+        <div class="space-y-3">
+            <div class="flex justify-center">
+                <a href="{{ route('terms') }}" class="text-sm text-gray-700 font-DanaBold underline">
+                    قوانین و مقررات <span class="text-original-red font-DanaBlack">Fix</span><span class="text-black font-DanaBlack">Tand</span>
+                </a>
+            </div>
+            <button type="submit" class="h-10 w-full rounded-lg bg-original-red text-white font-DanaBold text-sm cursor-pointer transition hover:bg-red-700">
+                ایجاد حساب
+            </button>
         </div>
-
-        <!-- Submit Button -->
-        <button type="submit"
-            class="h-11 w-full rounded-lg bg-original-red text-white font-DanaBold cursor-pointer transition">
-            ورود به حساب
-        </button>
     </form>
 
     <!-- Footer -->

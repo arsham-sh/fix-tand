@@ -14,6 +14,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 // Route::get('/otp' , [OtpController::class ,'index'])->name('otp');
 
+Route::get('/terms', function(){return view('terms');})->name('terms');
+
 Route::middleware('auth')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
 });
