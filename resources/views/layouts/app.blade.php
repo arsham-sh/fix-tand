@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FixTand —فروشگاه تعمیر و فروش موبایل</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/photo_5782904397707807609_y.jpg') }}">
-    @vite('public/css/style.css')
-    @vite('resources/css/app.css')
+    @vite([
+    'resources/css/app.css',
+    'resources/css/style.css',
+    ])
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+<body>
 
     @yield('content')
     
-    @vite('resources/js/app.js')
-    @vite('public/js/products-swiper.js')
-    @vite('public/js/auth.js')
-    @vite('public/js/app.js')
-    @vite('public/js/product-single.js')
+    @vite([
+    'resources/js/script.js',
+    'resources/js/products-swiper.js',
+    'resources/js/auth.js',
+    'resources/js/product-single.js',
+    ])
+
 </body>
 </html>

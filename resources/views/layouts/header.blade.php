@@ -1,5 +1,5 @@
+<!-- Hero Section -->
 <header class="relative px-4 2xl:px-0 h-[820px] lg:h-[700px] overflow-hidden flex flex-col">
-
     <!-- NAVBAR -->
     <section class="top-0 py-4 z-50">
         <!-- MAIN NAVBAR -->
@@ -535,3 +535,4 @@
     </div>
     <!-- End Why Choose Us Section -->
 </header>
+<!-- End Hero Section -->
