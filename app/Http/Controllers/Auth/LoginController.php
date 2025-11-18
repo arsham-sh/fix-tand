@@ -21,7 +21,13 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'username' => 'required|string',
-            'number' => 'required|string',
+            'number' => 'required|digits:11',
+        ],[
+            'username.required' => 'لطفا نام کاربری خود را وارد کنید',
+            'username.string' => 'نام کاربری باید به صورت متن باشد.',
+
+            'number.required' => 'لطفا شماره موبایل خود را وارد کنید',
+            'number.digits' => 'شماره موبایل شما اشتباه است.',
         ]);
 
         // Find user by both username and number for more security
@@ -32,9 +38,7 @@ class LoginController extends Controller
 
             return redirect()->route('index')->with('success', 'خوش آمدید!');
         } else {
-            return back()->withErrors([
-                'error' => 'شماره موبایل یا نام کاربری اشتباه است.',
-            ])->withInput();
+            return back()->with('error','شماره موبایل یا نام کاربری اشتباه است.',);
         }
     }
 }
