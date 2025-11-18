@@ -24,6 +24,7 @@
 
     <!-- Login Form -->
     <form id="loginForm" method="POST" action="{{ route('send.otp') }}" class="space-y-6">
+        @csrf
         <!-- Username -->
         <div class="flex flex-col space-y-1">
             <div class="flex items-center justify-between px-3 h-11 w-full text-sm rounded-lg font-DanaMediume bg-gray-100">

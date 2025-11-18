@@ -35,7 +35,7 @@ class RegisterController extends Controller
         $validate = $request->validate([
             'name' => 'required|string|min:4|max:255',
             'username' => 'required|string|min:4|max:255|unique:users',
-            'number' => 'required|integer|min:11|max:255|unique:users',
+            'number' => 'required|string|min:11|max:255|unique:users',
         ]);
 
         $user = User::create([
@@ -44,12 +44,14 @@ class RegisterController extends Controller
             'number' => $validate['number'],
         ]);
             
-        if ($user) {
-            $request->session()->regenerate();
+        if($user)
+        {
             // return redirect()->route('otp')->with('موفق', 'اطلاعات با موفقیت ثبت شد!');
             Auth::login($user);
             return redirect()->intended(route('index'))->with('success', 'اطلاعات با موفقیت ثبت شد!');
-        } else {
+        }
+        else
+        {
             return back()->with('error', 'اطلاعات ثبت نشد.');
         }
 

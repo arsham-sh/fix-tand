@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,21 +21,20 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'username' => 'required|string',
-            'number' => 'required|integer',
+            'number' => 'required|string',
         ]);
 
-        // Attempt to login
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            $request->session()->regenerate();
+        // Find user by both username and number for more security
+        $user = User::where('number', $credentials['number'])->where('username', $credentials['username'])->first();
 
-            Auth::login($credentials);
-            
-            // return redirect()->route('otp')->with('موفق', 'اطلاعات با موفقیت ثبت شد!');
-            return redirect()->intended(route('index'))->with('succes', 'خوش آمدید!');
-        }
-        else
-        {
-            return back()->with('error', 'شماره موبایل یا رمز عبور اشتباه است.');
+        if ($user) {
+            Auth::login($user);
+
+            return redirect()->route('index')->with('success', 'خوش آمدید!');
+        } else {
+            return back()->withErrors([
+                'error' => 'شماره موبایل یا نام کاربری اشتباه است.',
+            ])->withInput();
         }
     }
 }
