@@ -31,7 +31,7 @@
     </svg>
 
     <!-- HEADER -->
-    {{-- @extends('partials.header') --}}
+    @extends('layouts.header')
     <!-- END HEADER -->
 
     <main class="max-w-4xl mx-auto p-6 font-DanaMediume">
@@ -172,10 +172,10 @@
     </main>
 
     <!-- Footer -->
-    @extends('partials.footer')
+    @include('layouts.footer')
     <!-- End Footer -->
 
     <!-- Bottom Navigation -->
-    {{-- @extends('partials.bottom-nav') --}}
+    @extends('layouts.mobile-menu')
     <!-- End Bottom Navigation -->
 @endsection

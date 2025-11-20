@@ -11,4 +11,14 @@ class User extends Authenticatable
         'username',
         'number',
     ];
+
+    public function superUser()
+    {
+        return $this->superuser;
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
