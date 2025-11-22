@@ -9,6 +9,8 @@ use App\Http\Controllers\Panel\ProductController;
 use App\Http\Middleware\SuperUser;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', [IndexController::class, 'index'])->name('index');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'sendOtp'])->name('send.otp');
 
@@ -19,9 +21,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 Route::get('/terms', function(){return view('terms');})->name('terms');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [IndexController::class, 'index'])->name('index');
-});
+// Route::middleware('auth')->group(function () {
+// });
 
 Route::prefix('admin')->middleware(['auth', SuperUser::class])->group(function () {
     Route::get('/', [PanelIndexController::class, 'index'])->name('admin');

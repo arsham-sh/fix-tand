@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('panel.categories.index');
+        $categories = Category::latest()->paginate(20);
+        return view('panel.categories.index', compact('categories'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel.categories.create');
     }
 
     /**
@@ -28,7 +30,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required|unique:categories']);
+
+        Category::create($request->all());
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -42,24 +47,31 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('panel.categories.edit', compact('category'));
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validate = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $category->update($validate);
+        return redirect()->route('categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return back();
     }
 }
